@@ -10,7 +10,7 @@ import (
 	"sync"
 
 	"github.com/howeyc/gopass"
-	i "github.com/sternhenri/interact"
+	i "github.com/oxequa/interact"
 )
 
 type UI interface {
