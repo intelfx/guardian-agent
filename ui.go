@@ -9,8 +9,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/howeyc/gopass"
 	i "github.com/oxequa/interact"
+	"golang.org/x/term"
 )
 
 type UI interface {
@@ -97,7 +97,7 @@ func (tui *FancyTerminalUI) AskPassword(msg string) (string, error) {
 	defer tui.mu.Unlock()
 
 	fmt.Println(msg)
-	passBytes, err := gopass.GetPasswd()
+	passBytes, err := term.ReadPassword(int(os.Stdin.Fd()))
 	if err == nil {
 		return string(passBytes), nil
 	}
